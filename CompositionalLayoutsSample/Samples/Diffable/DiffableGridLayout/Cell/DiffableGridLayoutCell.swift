@@ -25,8 +25,6 @@ class DiffableGridLayoutCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
     }
     
     // MARK: Configure Cell
