@@ -39,6 +39,9 @@
 		A4C1FAB3234EDD9700A240BE /* DiffableDistinctLayoutListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C1FAB1234EDD9700A240BE /* DiffableDistinctLayoutListCell.xib */; };
 		A4C1FAB6234EE18300A240BE /* DiffableDistinctLayoutGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1FAB4234EE18300A240BE /* DiffableDistinctLayoutGridCell.swift */; };
 		A4C1FAB7234EE18300A240BE /* DiffableDistinctLayoutGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C1FAB5234EE18300A240BE /* DiffableDistinctLayoutGridCell.xib */; };
+		A4C1FAD0234F259100A240BE /* DiffableTableGridLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1FACF234F259100A240BE /* DiffableTableGridLayoutViewController.swift */; };
+		A4C1FAD2234F25AE00A240BE /* DiffableTableGridLayoutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C1FAD1234F25AE00A240BE /* DiffableTableGridLayoutViewController.storyboard */; };
+		A4C1FAD4234F281800A240BE /* DiffableTableGridLayoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1FAD3234F281800A240BE /* DiffableTableGridLayoutModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		A4C1FAB1234EDD9700A240BE /* DiffableDistinctLayoutListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiffableDistinctLayoutListCell.xib; sourceTree = "<group>"; };
 		A4C1FAB4234EE18300A240BE /* DiffableDistinctLayoutGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDistinctLayoutGridCell.swift; sourceTree = "<group>"; };
 		A4C1FAB5234EE18300A240BE /* DiffableDistinctLayoutGridCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiffableDistinctLayoutGridCell.xib; sourceTree = "<group>"; };
+		A4C1FACF234F259100A240BE /* DiffableTableGridLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableGridLayoutViewController.swift; sourceTree = "<group>"; };
+		A4C1FAD1234F25AE00A240BE /* DiffableTableGridLayoutViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiffableTableGridLayoutViewController.storyboard; sourceTree = "<group>"; };
+		A4C1FAD3234F281800A240BE /* DiffableTableGridLayoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableGridLayoutModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,7 @@
 				A42A54BA234DA9DD003F6B9A /* GridLayout */,
 				A4C1FA96234EB82300A240BE /* DiffableTableLayout */,
 				A42A54CC234DDCC3003F6B9A /* DiffableGridLayout */,
+				A4C1FACE234F254700A240BE /* DiffableTableGridLayout */,
 				A4C1FAA2234EC98100A240BE /* DiffableDistinctLayout */,
 			);
 			path = Samples;
@@ -233,6 +240,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		A4C1FACE234F254700A240BE /* DiffableTableGridLayout */ = {
+			isa = PBXGroup;
+			children = (
+				A4C1FAD3234F281800A240BE /* DiffableTableGridLayoutModel.swift */,
+				A4C1FACF234F259100A240BE /* DiffableTableGridLayoutViewController.swift */,
+				A4C1FAD1234F25AE00A240BE /* DiffableTableGridLayoutViewController.storyboard */,
+			);
+			path = DiffableTableGridLayout;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,6 +310,7 @@
 			files = (
 				A42A54B0234DA005003F6B9A /* TableLayoutViewController.storyboard in Resources */,
 				A42A54A4234D9BF4003F6B9A /* LaunchScreen.storyboard in Resources */,
+				A4C1FAD2234F25AE00A240BE /* DiffableTableGridLayoutViewController.storyboard in Resources */,
 				A4C1FA9F234EB92300A240BE /* DiffableTableLayoutCell.xib in Resources */,
 				A42A54D0234DDD18003F6B9A /* DiffableGridLayoutViewController.storyboard in Resources */,
 				A42A54D5234DDD67003F6B9A /* DiffableGridLayoutCell.xib in Resources */,
@@ -316,11 +334,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A42A54D4234DDD67003F6B9A /* DiffableGridLayoutCell.swift in Sources */,
+				A4C1FAD0234F259100A240BE /* DiffableTableGridLayoutViewController.swift in Sources */,
 				A4C1FAA4234ECE0A00A240BE /* DiffableDistinctLayoutViewController.swift in Sources */,
 				A42A549C234D9BEF003F6B9A /* ViewController.swift in Sources */,
 				A42A5498234D9BEF003F6B9A /* AppDelegate.swift in Sources */,
 				A42A549A234D9BEF003F6B9A /* SceneDelegate.swift in Sources */,
 				A42A54C5234DAC77003F6B9A /* GridLayoutSection.swift in Sources */,
+				A4C1FAD4234F281800A240BE /* DiffableTableGridLayoutModel.swift in Sources */,
 				A4C1FAB6234EE18300A240BE /* DiffableDistinctLayoutGridCell.swift in Sources */,
 				A42A54B9234DA4AF003F6B9A /* TableLayoutSection.swift in Sources */,
 				A42A54C2234DAB2A003F6B9A /* GridLayoutCell.swift in Sources */,
