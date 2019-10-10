@@ -20,15 +20,6 @@ final class DiffableDistinctLayoutViewController: UIViewController {
     private enum DistinctSection: Int, CaseIterable {
         case list
         case grid
-        // - Number of collums
-        var collums: Int {
-            switch self {
-            case .list:
-                return 1
-            case .grid:
-                return 3
-            }
-        }
     }
     private var dataSource: UICollectionViewDiffableDataSource<DistinctSection, Int>!
     
@@ -71,7 +62,7 @@ extension DiffableDistinctLayoutViewController {
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.33))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = NSDirectionalEdgeInsets(top: 24, leading: 2, bottom: 0, trailing: 2)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 24, leading: 2, bottom: 44, trailing: 2) // NavigatonBar分bottomに余裕を持たせた方がいいかも
                 return section
             }
         }
@@ -102,7 +93,7 @@ extension DiffableDistinctLayoutViewController {
         // - Initial dataSource
         // NavigationBar が LargeTitleの場合、
         // スクロールできるかどうかの間の時にスクロール領域がバグるので動的な画面は注意
-        let itemsPerSection = 17 // iPhoneXS は 11 でバグ
+        let itemsPerSection = 11 // iPhoneXS は 11 でバグ
         var snapshot = NSDiffableDataSourceSnapshot<DistinctSection, Int>()
         DistinctSection.allCases.forEach {
             print($0)
