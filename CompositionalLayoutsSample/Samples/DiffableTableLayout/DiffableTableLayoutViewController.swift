@@ -19,7 +19,6 @@ final class DiffableTableLayoutViewController: UIViewController {
     private enum DiffableTableLayoutSection {
         case table
     }
-    private var models: [DiffableTableLayoutModel] = [DiffableTableLayoutModel]()
     private var dataSource: UICollectionViewDiffableDataSource<DiffableTableLayoutSection, DiffableTableLayoutModel>!
     
     // MARK: Lifecycle
@@ -35,23 +34,25 @@ final class DiffableTableLayoutViewController: UIViewController {
     
     @objc
     func onTapBarButton(_ sender: UIBarButtonItem) {
+        // - Current snapshot
+        var currentSnapshot = dataSource.snapshot()
         // - Append
         let red = Double.random(in: 0 ..< 255.0)
         let green = Double.random(in: 0 ..< 255.0)
         let blue = Double.random(in: 0 ..< 255.0)
-        models.append(DiffableTableLayoutModel(title: "RGB(\(Int(red)), \(Int(green)), \(Int(blue)))", red: red, green: green, blue: blue))
+        let newModel = DiffableTableLayoutModel(title: "RGB(\(Int(red)), \(Int(green)), \(Int(blue)))", red: red, green: green, blue: blue)
         // - Reload
-        var snapshot = NSDiffableDataSourceSnapshot<DiffableTableLayoutSection, DiffableTableLayoutModel>()
-        snapshot.appendSections([.table])
-        snapshot.appendItems(models)
-        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+        currentSnapshot.appendSections([.table])
+        currentSnapshot.appendItems([newModel])
+        dataSource.apply(currentSnapshot, animatingDifferences: true, completion: nil)
     }
     
     @objc
     func onRefresh(_ sender: UIRefreshControl) {
+        // - Current snapshot
+        let currentSnapshot = dataSource.snapshot()
         // - Sort
-        let sorted = models.sorted(by: { $1.sum < $0.sum })
-        models = sorted
+        let sorted = currentSnapshot.itemIdentifiers.sorted(by: { $1.sum < $0.sum })
         // - Reload
         var snapshot = NSDiffableDataSourceSnapshot<DiffableTableLayoutSection, DiffableTableLayoutModel>()
         snapshot.appendSections([.table])
