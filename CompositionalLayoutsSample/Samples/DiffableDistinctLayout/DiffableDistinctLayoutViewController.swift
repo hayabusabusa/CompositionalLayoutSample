@@ -92,8 +92,8 @@ extension DiffableDistinctLayoutViewController {
         }
         // - Initial dataSource
         // NavigationBar が LargeTitleの場合、
-        // スクロールできるかどうかの間の時にスクロール領域がバグるので動的な画面は注意
-        let itemsPerSection = 11 // iPhoneXS は 11 でバグ
+        // スクロールできるかどうかの間の時にスクロール領域がバグるので動的な画面は注意(Insetで対応)
+        let itemsPerSection = 11
         var snapshot = NSDiffableDataSourceSnapshot<DistinctSection, Int>()
         DistinctSection.allCases.forEach {
             print($0)
