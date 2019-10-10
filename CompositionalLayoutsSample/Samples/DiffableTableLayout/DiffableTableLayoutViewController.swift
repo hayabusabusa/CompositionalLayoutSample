@@ -35,16 +35,17 @@ final class DiffableTableLayoutViewController: UIViewController {
     @objc
     func onTapBarButton(_ sender: UIBarButtonItem) {
         // - Current snapshot
-        var currentSnapshot = dataSource.snapshot()
+        var updateModels = dataSource.snapshot().itemIdentifiers
         // - Append
         let red = Double.random(in: 0 ..< 255.0)
         let green = Double.random(in: 0 ..< 255.0)
         let blue = Double.random(in: 0 ..< 255.0)
-        let newModel = DiffableTableLayoutModel(title: "RGB(\(Int(red)), \(Int(green)), \(Int(blue)))", red: red, green: green, blue: blue)
+        updateModels.append(DiffableTableLayoutModel(title: "RGB(\(Int(red)), \(Int(green)), \(Int(blue)))", red: red, green: green, blue: blue))
         // - Reload
-        currentSnapshot.appendSections([.table])
-        currentSnapshot.appendItems([newModel])
-        dataSource.apply(currentSnapshot, animatingDifferences: true, completion: nil)
+        var snapshot = NSDiffableDataSourceSnapshot<DiffableTableLayoutSection, DiffableTableLayoutModel>()
+        snapshot.appendSections([.table])
+        snapshot.appendItems(updateModels)
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
     
     @objc
