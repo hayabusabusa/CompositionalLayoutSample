@@ -26,6 +26,13 @@ final class DiffableTagGridLayoutViewController: UIViewController {
         configureCollectionView()
         configureDataSource()
     }
+    
+    // MARK: Tap event
+    
+    @objc
+    func onTapBarButton(_ sender: UIBarButtonItem) {
+        updateUI(with: true)
+    }
 }
 
 // MARK: - Configure
@@ -34,6 +41,7 @@ extension DiffableTagGridLayoutViewController {
     
     func configureNavigation() {
         navigationItem.title = "Tag + Grid"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(onTapBarButton(_:)))
     }
     
     func createLayout() -> UICollectionViewLayout {
@@ -97,7 +105,7 @@ extension DiffableTagGridLayoutViewController {
         // - Initial
         var tags: [DiffableTagGridItem] = [DiffableTagGridItem]()
         var grids: [DiffableTagGridItem] = [DiffableTagGridItem]()
-        for _ in 0 ..< 15 {
+        for _ in 0 ..< 8 {
             let red = Int.random(in: 0 ..< 255)
             let green = Int.random(in: 0 ..< 255)
             let blue = Int.random(in: 0 ..< 255)
@@ -113,6 +121,35 @@ extension DiffableTagGridLayoutViewController {
         snapshot.appendItems(grids.shuffled(), toSection: .grid)
         dataSource.apply(snapshot)
     }
+    
+    func updateUI(with color: Color) {
+        // - Current
+        let tags = dataSource.snapshot().itemIdentifiers(inSection: .tag)
+        var grids = dataSource.snapshot().itemIdentifiers(inSection: .grid)
+        // - Update
+        grids.append(DiffableTagGridItem(itemType: .grid(model: DiffableGridModel(color: color))))
+        var snapshot = NSDiffableDataSourceSnapshot<DiffableTagGridSection, DiffableTagGridItem>()
+        snapshot.appendSections([.tag])
+        snapshot.appendItems(tags, toSection: .tag)
+        snapshot.appendSections([.grid])
+        snapshot.appendItems(grids, toSection: .grid)
+        dataSource.apply(snapshot)
+    }
+    
+    func updateUI(with shuffled: Bool) {
+        if shuffled {
+            // - Current
+            let tags = dataSource.snapshot().itemIdentifiers(inSection: .tag)
+            let grids = dataSource.snapshot().itemIdentifiers(inSection: .grid)
+            // - Update
+            var snapshot = NSDiffableDataSourceSnapshot<DiffableTagGridSection, DiffableTagGridItem>()
+            snapshot.appendSections([.tag])
+            snapshot.appendItems(tags.shuffled(), toSection: .tag)
+            snapshot.appendSections([.grid])
+            snapshot.appendItems(grids.shuffled(), toSection: .grid)
+            dataSource.apply(snapshot)
+        }
+    }
 }
 
 // MARK: - CollectionView Delegate
@@ -121,5 +158,13 @@ extension DiffableTagGridLayoutViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        switch item.itemType {
+        case .tag(let model):
+            updateUI(with: model.color)
+        case .grid:
+            break
+        }
     }
 }
