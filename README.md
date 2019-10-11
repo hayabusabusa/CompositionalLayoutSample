@@ -7,6 +7,6 @@ iOS13 Compositional Layout and Diffable DataSource sample repository.
 
 ## Preview
 
-| Diffable+Table | Diffable+Grid |  
-| -------------- | ------------- |  
-| ![DiffableTable](https://github.com/hayabusabusa/CompositionalLayoutSample/blob/master/Gifs/DiffableTable.gif) | ![DiffableGrid](https://github.com/hayabusabusa/CompositionalLayoutSample/blob/master/Gifs/DiffableGrid.gif) |
+| Diffable+Table | Diffable+Grid | Diffable+Tag and Grid |
+| -------------- | ------------- | --------------------- |
+| ![DiffableTable](https://github.com/hayabusabusa/CompositionalLayoutSample/blob/master/Gifs/DiffableTable.gif) | ![DiffableGrid](https://github.com/hayabusabusa/CompositionalLayoutSample/blob/master/Gifs/DiffableGrid.gif) | ![DiffableTable](https://github.com/hayabusabusa/CompositionalLayoutSample/blob/master/Gifs/DiffableTagGrid.gif) |
