@@ -144,7 +144,7 @@ extension DiffableTagGridLayoutViewController {
             // - Update
             var snapshot = NSDiffableDataSourceSnapshot<DiffableTagGridSection, DiffableTagGridItem>()
             snapshot.appendSections([.tag])
-            snapshot.appendItems(tags.shuffled(), toSection: .tag)
+            snapshot.appendItems(tags, toSection: .tag)
             snapshot.appendSections([.grid])
             snapshot.appendItems(grids.shuffled(), toSection: .grid)
             dataSource.apply(snapshot)
